@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "507169302175",
+    "project_id": "bodytechapp",
+    "storage_bucket": "bodytechapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:507169302175:android:2d80a9f885e06729aae4aa",
+        "android_client_info": {
+          "package_name": "com.bodytech.body_tech_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZ1GoqVErYId42LOnMl-8KuM7wr1hhmmY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
