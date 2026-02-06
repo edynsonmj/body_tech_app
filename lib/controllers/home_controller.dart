@@ -1,5 +1,6 @@
 import 'package:body_tech_app/data/models/movie_model.dart';
 import 'package:body_tech_app/data/services/tmdb_service.dart';
+import 'package:body_tech_app/view/screens/movie_detail_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -73,5 +74,9 @@ class HomeController extends GetxController {
       isLoading.value = false;
       isLoadingMore.value = false;
     }
+  }
+
+  void goToDetail(MovieModel movie) {
+    Get.to(() => MovieDetailPage(movie: movie));
   }
 }

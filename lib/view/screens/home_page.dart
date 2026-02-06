@@ -92,6 +92,7 @@ class HomePage extends StatelessWidget {
 
             final movie = controller.movies[i];
             return ListTile(
+              onTap: () => controller.goToDetail(movie),
               leading:
                   movie.posterPath.isNotEmpty
                       ? Image.network(
