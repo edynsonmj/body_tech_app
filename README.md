@@ -34,21 +34,24 @@ Para desarrollar o compilar este proyecto, necesitas:
 
 ## 💻 Instalación y Ejecución
 
-2. instalar dependencias
-* navega hasta la raiz del proyecto o abre con algun editor de texto como visual studio code o android studio
-* En la terminal ejecuta el comando: flutter pub get
+### 2. Instalar dependencias
+* Navega hasta la raíz del proyecto o ábrelo con algún editor de texto como Visual Studio Code o Android Studio.
+* En la terminal, ejecuta el siguiente comando:
+    ```bash
+    flutter pub get
+    ```
 
+### 3. Configuración de la llave
+* Crea un archivo `.env` en la raíz del proyecto, o usa el archivo `.env.example` quitándole la extensión `.example`. El sistema intentará leer solo el archivo llamado `.env`.
+* Agrega tu API key de TMDb en el campo correspondiente:
+    ```env
+    TMDB_API_KEY=aqui_tu_key
+    ```
+* La key se encuentra en el correo, o puedes usar tu propia key de [TMDb](https://www.themoviedb.org/).
 
-
-3. configuracion de la llave
-
-    * Crea un archivo `.env` en la raíz del proyecto, o usa el archivo `.env.example` pero quita la extension .example, el sistema intentara leera solo el archivo llamado `.env`
-    * Agrega tu API key de TMDb en el campo "aqui_tu_key": TMDB_API_KEY=aqui_tu_key
-    * la key se encuentra en el correo, o usa tu propia key de TMDb movies
-
-
-
-3. Ejecuta
-    * usa el comando para ejecucion de la aplicacion: flutter run
-    * si es primera vez de ejecucion probablemente te solicite seleccionar un dispositivo, asegurate de tener un emulador configurado o un dispositivo android fisico conectado
-
+### 4. Ejecución
+* Usa el comando para la ejecución de la aplicación:
+    ```bash
+    flutter run
+    ```
+* Si es la primera vez que ejecutas la aplicación, probablemente te solicite seleccionar un dispositivo. Asegúrate de tener un emulador configurado o un dispositivo Android físico conectado.
