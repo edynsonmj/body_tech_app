@@ -1,7 +1,6 @@
 import 'package:body_tech_app/config/app_pages.dart';
 import 'package:body_tech_app/config/app_routes.dart';
 import 'package:body_tech_app/firebase_options.dart';
-import 'package:body_tech_app/view/screens/login_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
