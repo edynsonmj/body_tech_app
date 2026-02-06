@@ -1,3 +1,5 @@
+import 'package:body_tech_app/config/app_routes.dart';
+import 'package:body_tech_app/controllers/user_controller.dart';
 import 'package:get/get.dart';
 import '../data/services/firebase_auth.dart';
 
@@ -24,7 +26,9 @@ class LoginController extends GetxController {
     final user = await _authService.signInWithEmail(email, password);
     isLoading.value = false;
     if (user != null) {
-      errorMessage.value = "tenemos datos, ahora redirigeme al home";
+      final userController = Get.put(UserController());
+      userController.email.value = email;
+      Get.offAllNamed(AppRoutes.home);
     } else {
       errorMessage.value = "Error de credenciales";
     }
@@ -40,7 +44,7 @@ class LoginController extends GetxController {
     isLoading.value = false;
 
     if (user != null) {
-      errorMessage.value = "tenemos datos, ahora redirigeme al honme";
+      Get.toNamed(AppRoutes.login);
     } else {
       errorMessage.value = "No se pudo registrar el usuario";
     }
