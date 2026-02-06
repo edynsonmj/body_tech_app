@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/widgets.dart';
 
 class AuthService {
   //instancia del servicio obtenida, (patron singleton)
@@ -12,8 +13,8 @@ class AuthService {
         password: password,
       );
       return result.user;
-    } on FirebaseAuthException catch (exceptionFBA) {
-      //TODO: controlar error
+    } on FirebaseAuthException catch (exceptionFBA, stack) {
+      debugPrintStack(label: exceptionFBA.message, stackTrace: stack);
       return null;
     }
   }
@@ -26,8 +27,8 @@ class AuthService {
         password: password,
       );
       return result.user;
-    } on FirebaseAuthException catch (exceptionFBA) {
-      //TODO: controlar error
+    } on FirebaseAuthException catch (exceptionFBA, stack) {
+      debugPrintStack(label: exceptionFBA.message, stackTrace: stack);
       return null;
     }
   }
