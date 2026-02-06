@@ -91,4 +91,3 @@ lib/
 │
 ├── firebase_options.dart    # Configuración generada por FlutterFire
 └── main.dart                # Punto de entrada de la aplicación
-```
