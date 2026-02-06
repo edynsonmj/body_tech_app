@@ -57,6 +57,7 @@ Para desarrollar o compilar este proyecto, necesitas:
 * Si es la primera vez que ejecutas la aplicación, probablemente te solicite seleccionar un dispositivo. Asegúrate de tener un emulador configurado o un dispositivo Android físico conectado.
 
 ## estructura del proyecto
+```text
 lib/
 ├── config/                  # Configuración global de la app
 │   ├── app_pages.dart       # Definición de páginas (GetX Pages)
@@ -90,3 +91,4 @@ lib/
 │
 ├── firebase_options.dart    # Configuración generada por FlutterFire
 └── main.dart                # Punto de entrada de la aplicación
+```
