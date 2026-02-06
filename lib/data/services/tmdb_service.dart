@@ -30,7 +30,7 @@ class TmdbService {
       //se da formato y retornan
       return results.map((e) => MovieModel.fromJson(e)).toList();
     } on DioException catch (e) {
-      throw Exception('Error TMDb: ${e.message}');
+      return [];
     }
   }
 }

@@ -1,5 +1,6 @@
 import 'package:body_tech_app/config/app_routes.dart';
 import 'package:body_tech_app/controllers/user_controller.dart';
+import 'package:body_tech_app/data/storage/session_manager.dart';
 import 'package:get/get.dart';
 import '../data/services/firebase_auth.dart';
 
@@ -11,6 +12,8 @@ class LoginController extends GetxController {
   RxBool isLoading = false.obs;
   //mensaje de error
   RxString errorMessage = "".obs;
+
+  SessionManager sesion = SessionManager();
 
   Future<void> login(String email, String password) async {
     //limpiando errores previos
@@ -26,8 +29,7 @@ class LoginController extends GetxController {
     final user = await _authService.signInWithEmail(email, password);
     isLoading.value = false;
     if (user != null) {
-      final userController = Get.put(UserController());
-      userController.email.value = email;
+      sesion.saveSession(email);
       Get.offAllNamed(AppRoutes.home);
     } else {
       errorMessage.value = "Credenciales incorrectas";

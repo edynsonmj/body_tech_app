@@ -33,6 +33,23 @@ class MovieDetailPage extends StatelessWidget {
     return Image.network(
       '${TmdbConfig.imageBaseUrl}${movie.backdropPath}',
       fit: BoxFit.cover,
+      errorBuilder: (context, error, stackTrace) {
+        return Container(
+          color: Colors.grey[300], // Fondo gris de respaldo
+          child: const Center(
+            child: Column(
+              children: [
+                Icon(
+                  Icons.broken_image, // Icono de imagen rota
+                  color: Colors.grey,
+                  size: 100,
+                ),
+                Text('Sin imagen'),
+              ],
+            ),
+          ),
+        );
+      },
       width: double.infinity,
       height: 250,
     );

@@ -2,13 +2,13 @@ import 'package:body_tech_app/config/app_routes.dart';
 import 'package:body_tech_app/config/tmdb_config.dart';
 import 'package:body_tech_app/controllers/home_controller.dart';
 import 'package:body_tech_app/controllers/user_controller.dart';
+import 'package:body_tech_app/data/storage/session_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
-  //para obtener datos del usuario logeado
-  final UserController _userController = Get.find<UserController>();
+  SessionManager sesion = SessionManager();
   //controlador principal
   final HomeController controller = Get.put(HomeController());
 
@@ -26,7 +26,7 @@ class HomePage extends StatelessWidget {
           //datos del usuario y cierre de sesion
           IconButton(
             icon: const Icon(Icons.account_circle),
-            onPressed: () => _showUserMenu(_userController.email.value),
+            onPressed: () => _showUserMenu(sesion.getUserEmail().toString()),
           ),
         ],
       ),
@@ -50,6 +50,7 @@ class HomePage extends StatelessWidget {
               leading: const Icon(Icons.logout),
               title: const Text('Cerrar sesión'),
               onTap: () {
+                sesion.logout();
                 Get.back();
                 Get.offAllNamed(AppRoutes.login);
               },
@@ -99,8 +100,31 @@ class HomePage extends StatelessWidget {
                         '${TmdbConfig.imageBaseUrl}${movie.posterPath}',
                         width: 50,
                         fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          return SizedBox(
+                            width: 50,
+                            height: 50,
+                            child: Container(
+                              color: Colors.grey[300],
+                              child: const Icon(
+                                Icons.broken_image,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          );
+                        },
                       )
-                      : const Icon(Icons.movie),
+                      : SizedBox(
+                        width: 50,
+                        height: 50,
+                        child: Container(
+                          color: Colors.grey[300],
+                          child: const Icon(
+                            Icons.broken_image,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ),
               title: Text(movie.title),
               subtitle: Text('⭐ ${movie.voteAverage}'),
             );

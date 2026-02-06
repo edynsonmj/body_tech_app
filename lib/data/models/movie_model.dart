@@ -1,18 +1,37 @@
+import 'package:hive/hive.dart';
+
+part 'movie_model.g.dart';
+
 ///Modelo de la informacion de una pelicula
-class MovieModel {
+@HiveType(typeId: 0)
+class MovieModel extends HiveObject {
+  @HiveField(0)
   final String posterPath;
+  @HiveField(1)
   final bool adult;
+  @HiveField(2)
   final String overview;
+  @HiveField(3)
   final String releaseDate;
+  @HiveField(4)
   final List<int> genreIds;
+  @HiveField(5)
   final int id;
+  @HiveField(6)
   final String originalTitle;
+  @HiveField(7)
   final String originalLanguage;
+  @HiveField(8)
   final String title;
+  @HiveField(9)
   final String backdropPath;
+  @HiveField(10)
   final double popularity;
+  @HiveField(11)
   final int voteCount;
+  @HiveField(12)
   final bool video;
+  @HiveField(13)
   final double voteAverage;
 
   MovieModel({
