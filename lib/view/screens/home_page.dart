@@ -76,8 +76,20 @@ class HomePage extends StatelessWidget {
 
         //listado de peliculas encontradas
         return ListView.builder(
-          itemCount: controller.movies.length,
+          controller: controller.scrollController,
+          // itemCount ahora incluye un item extra si está cargando más
+          itemCount: controller.movies.length + 1,
           itemBuilder: (_, i) {
+            // Si llegamos al último item y está cargando más, mostramos spinner al final
+            if (i == controller.movies.length) {
+              return Obx(
+                () =>
+                    controller.isLoadingMore.value
+                        ? const Center(child: CircularProgressIndicator())
+                        : const SizedBox.shrink(),
+              );
+            }
+
             final movie = controller.movies[i];
             return ListTile(
               leading:
