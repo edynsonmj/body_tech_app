@@ -2,15 +2,15 @@
 
 App de prueba con registro y autenticacion se usuario mediante firebase, gestion local con hive y consulta de api publica.
 
-## Getting Started
+## Configuración
 
-This project is a starting point for a Flutter application.
+1. Crea un archivo `.env` en la raíz del proyecto, o usa el archivo `.env.example` pero quita la extension .example, el sistema intentara leera solo el archivo `.env`
+2. Agrega tu API key de TMDb:
 
-A few resources to get you started if this is your first Flutter project:
+TMDB_API_KEY=aqui_tu_key
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+la key se encuentra en el correo, o usa tu propia key de TMDb movies
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+3. Ejecuta:
+flutter pub get
+flutter run

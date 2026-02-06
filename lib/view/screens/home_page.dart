@@ -1,11 +1,17 @@
 import 'package:body_tech_app/config/app_routes.dart';
+import 'package:body_tech_app/config/tmdb_config.dart';
+import 'package:body_tech_app/controllers/home_controller.dart';
 import 'package:body_tech_app/controllers/user_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
+  //para obtener datos del usuario logeado
   final UserController _userController = Get.find<UserController>();
+  //controlador principal
+  final HomeController controller = Get.put(HomeController());
+
   @override
   Widget build(BuildContext context) {
     return safeScaffold();
@@ -17,24 +23,14 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
         title: const Text('Home'),
         actions: [
+          //datos del usuario y cierre de sesion
           IconButton(
             icon: const Icon(Icons.account_circle),
             onPressed: () => _showUserMenu(_userController.email.value),
           ),
         ],
       ),
-      body: SafeArea(
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            return SingleChildScrollView(
-              child: ConstrainedBox(
-                constraints: BoxConstraints(minHeight: constraints.maxHeight),
-                child: container(),
-              ),
-            );
-          },
-        ),
-      ),
+      body: container(),
     );
   }
 
@@ -54,8 +50,7 @@ class HomePage extends StatelessWidget {
               leading: const Icon(Icons.logout),
               title: const Text('Cerrar sesión'),
               onTap: () {
-                // Aquí haces logout
-                Get.back(); // cierra el bottom sheet
+                Get.back();
                 Get.offAllNamed(AppRoutes.login);
               },
             ),
@@ -66,20 +61,39 @@ class HomePage extends StatelessWidget {
   }
 
   Widget container() {
-    return Padding(
-      padding: const EdgeInsets.all(24),
-      child: Center(
-        child: Form(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Icon(Icons.person_add, size: 96),
-              const SizedBox(height: 24),
-            ],
-          ),
-        ),
-      ),
+    return SafeArea(
+      //nuestro contenido debe observar los resultados consultados
+      child: Obx(() {
+        //cargando datos
+        if (controller.isLoading.value) {
+          return const Center(child: CircularProgressIndicator());
+        }
+
+        //mostrar error
+        if (controller.error.isNotEmpty) {
+          return Center(child: Text(controller.error.value));
+        }
+
+        //listado de peliculas encontradas
+        return ListView.builder(
+          itemCount: controller.movies.length,
+          itemBuilder: (_, i) {
+            final movie = controller.movies[i];
+            return ListTile(
+              leading:
+                  movie.posterPath.isNotEmpty
+                      ? Image.network(
+                        '${TmdbConfig.imageBaseUrl}${movie.posterPath}',
+                        width: 50,
+                        fit: BoxFit.cover,
+                      )
+                      : const Icon(Icons.movie),
+              title: Text(movie.title),
+              subtitle: Text('⭐ ${movie.rating}'),
+            );
+          },
+        );
+      }),
     );
   }
 }
