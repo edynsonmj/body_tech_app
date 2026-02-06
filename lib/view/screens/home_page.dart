@@ -101,7 +101,7 @@ class HomePage extends StatelessWidget {
                       )
                       : const Icon(Icons.movie),
               title: Text(movie.title),
-              subtitle: Text('⭐ ${movie.rating}'),
+              subtitle: Text('⭐ ${movie.voteAverage}'),
             );
           },
         );
