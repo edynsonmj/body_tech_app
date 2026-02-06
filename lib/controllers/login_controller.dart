@@ -30,7 +30,7 @@ class LoginController extends GetxController {
       userController.email.value = email;
       Get.offAllNamed(AppRoutes.home);
     } else {
-      errorMessage.value = "Error de credenciales";
+      errorMessage.value = "Credenciales incorrectas";
     }
   }
 
