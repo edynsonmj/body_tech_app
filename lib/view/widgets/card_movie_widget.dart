@@ -42,8 +42,9 @@ class CardMovieWidget extends StatelessWidget {
                   atrPosterLink!,
                   fit: BoxFit.cover,
                   errorBuilder:
-                      (context, error, stackTrace) =>
-                          SizedBox.expand(child: Icon(Icons.broken_image)),
+                      (context, error, stackTrace) => SizedBox.expand(
+                        child: Icon(Icons.broken_image, size: 200),
+                      ),
                 ),
               )
               : SizedBox.expand(child: Icon(Icons.broken_image)),
