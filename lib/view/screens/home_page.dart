@@ -1,8 +1,7 @@
 import 'package:body_tech_app/config/app_routes.dart';
-import 'package:body_tech_app/config/tmdb_config.dart';
 import 'package:body_tech_app/controllers/home_controller.dart';
-import 'package:body_tech_app/controllers/user_controller.dart';
 import 'package:body_tech_app/data/storage/session_manager.dart';
+import 'package:body_tech_app/view/widgets/card_movie_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -92,41 +91,9 @@ class HomePage extends StatelessWidget {
             }
 
             final movie = controller.movies[i];
-            return ListTile(
+            return InkWell(
+              child: CardMovieWidget(atrMovie: movie),
               onTap: () => controller.goToDetail(movie),
-              leading:
-                  movie.posterPath.isNotEmpty
-                      ? Image.network(
-                        '${TmdbConfig.imageBaseUrl}${movie.posterPath}',
-                        width: 50,
-                        fit: BoxFit.cover,
-                        errorBuilder: (context, error, stackTrace) {
-                          return SizedBox(
-                            width: 50,
-                            height: 50,
-                            child: Container(
-                              color: Colors.grey[300],
-                              child: const Icon(
-                                Icons.broken_image,
-                                color: Colors.grey,
-                              ),
-                            ),
-                          );
-                        },
-                      )
-                      : SizedBox(
-                        width: 50,
-                        height: 50,
-                        child: Container(
-                          color: Colors.grey[300],
-                          child: const Icon(
-                            Icons.broken_image,
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ),
-              title: Text(movie.title),
-              subtitle: Text('⭐ ${movie.voteAverage}'),
             );
           },
         );

@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'app ffutter',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.redAccent),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
       ),
       initialRoute: isLogging ? AppRoutes.home : AppRoutes.login,
       //listado de rutas

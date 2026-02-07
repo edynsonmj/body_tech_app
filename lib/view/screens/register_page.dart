@@ -17,7 +17,7 @@ class RegisterPage extends StatelessWidget {
 
   Widget safeScaffold() {
     return Scaffold(
-      appBar: AppBar(title: const Text('Registro')),
+      appBar: AppBar(title: const Text('Registro'), centerTitle: true),
       body: SafeArea(
         child: LayoutBuilder(
           builder: (context, constraints) {
@@ -43,7 +43,10 @@ class RegisterPage extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Icon(Icons.person_add, size: 96),
+              CircleAvatar(
+                radius: 75,
+                child: Icon(Icons.person_add, size: 100),
+              ),
               const SizedBox(height: 24),
 
               emailField(),

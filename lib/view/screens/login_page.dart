@@ -19,7 +19,7 @@ class LoginPage extends StatelessWidget {
   Widget safeScaffold() {
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      appBar: AppBar(title: const Text('Login')),
+      appBar: AppBar(title: const Text('Login'), centerTitle: true),
       body: SafeArea(child: SingleChildScrollView(child: container())),
     );
   }
@@ -50,10 +50,7 @@ class LoginPage extends StatelessWidget {
   }
 
   Widget headerIcon() {
-    return const CircleAvatar(
-      radius: 48,
-      child: Icon(Icons.lock_outline, size: 48),
-    );
+    return const CircleAvatar(radius: 75, child: Icon(Icons.person, size: 100));
   }
 
   Widget emailField() {
